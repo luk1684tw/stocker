@@ -18,7 +18,7 @@ class Stocker():
     def __init__(self, price):
         self.symbol = 'the stock'
         s = price
-        stock = pd.DataFrame({'Date':s.index, 'y':s.Price, 'ds':s.index, 'close':s.Close,'open':s.Open}, index=None)
+        stock = pd.DataFrame({'Date':s['Date'], 'y':s['Price'], 'ds':s['Date'], 'close':s['Close'],'open':s['Open']}, index=None)
 
         if ('Adj. Close' not in stock.columns):
             stock['Adj. Close'] = stock['close']
@@ -29,7 +29,7 @@ class Stocker():
         
         # Data assigned as class attribute
         self.stock = stock.copy()
-        
+        self.stock['Date'] = self.stock[;Date].to_datetime()
         # Minimum and maximum date in range
         self.min_date = pd.to_datetime(min(stock['ds']))
         self.max_date = pd.to_datetime(max(stock['ds']))
