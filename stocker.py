@@ -18,7 +18,7 @@ class Stocker():
     def __init__(self, price):
         self.symbol = 'the stock'
         s = price
-        stock = pd.DataFrame({'Date':s.index, 'y':s.Price, 'ds':s.index, 'close':s.Close,'open':s.Open}, index=None)
+        stock = pd.DataFrame({'Date':s.Date, 'y':s.Price, 'ds':s.Date, 'close':s.Close,'open':s.Open}, index=None)
 
         if ('Adj. Close' not in stock.columns):
             stock['Adj. Close'] = stock['close']
