@@ -38,10 +38,10 @@ class Stocker():
         self.max_price = np.max(self.stock['y'])
         self.min_price = np.min(self.stock['y'])
         
-        self.min_price_date = datetime.strptime(self.stock[self.stock['y'] == self.min_price]['ds'],'%Y-%m-%d')
-        self.min_price_date = datetime.strptime(self.min_price_date[self.min_price_date.index[0]],'%Y-%m-%d')
-        self.max_price_date = datetime.strptime(self.stock[self.stock['y'] == self.max_price]['ds'],'%Y-%m-%d')
-        self.max_price_date = datetime.strptime(self.max_price_date[self.max_price_date.index[0]],'%Y-%m-%d')
+        self.min_price_date = self.stock[self.stock['y'] == self.min_price]['ds']
+        self.min_price_date = self.min_price_date[self.min_price_date.index[0]]
+        self.max_price_date = self.stock[self.stock['y'] == self.max_price]['ds']
+        self.max_price_date = self.max_price_date[self.max_price_date.index[0]]
         
         # The starting price (starting with the opening price)
         self.starting_price = float(self.stock.ix[0, 'Adj. Open'])
