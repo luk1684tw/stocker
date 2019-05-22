@@ -68,7 +68,7 @@ class Stocker():
         
         print (type(self.max_date))
         print (type(self.min_price_date))
-        print (type(self.stock['Date']))
+        print (self.stock['Date'].dtype)
         print('{} Stocker Initialized. Data covers {} to {}.'.format(self.symbol,
                                                                      self.min_date,
                                                                      self.max_date))
