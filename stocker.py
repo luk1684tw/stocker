@@ -32,7 +32,6 @@ class Stocker():
         # Minimum and maximum date in range
         self.min_date = min(stock['ds'])
         self.max_date = max(stock['ds'])
-        print(type(self.max_date))
         
         # Find max and min prices and dates on which they occurred
         self.max_price = np.max(self.stock['y'])
@@ -64,7 +63,8 @@ class Stocker():
         self.yearly_seasonality = True
         self.changepoints = None
         
-        print('{} Stocker Initialized. Data covers {} to {}.'.format(self.symbol,
+        print(type(self.max_date))
+        # print('{} Stocker Initialized. Data covers {} to {}.'.format(self.symbol,
                                                                      self.min_date,
                                                                      self.max_date))
     
