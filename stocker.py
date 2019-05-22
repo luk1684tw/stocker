@@ -29,6 +29,7 @@ class Stocker():
         
         # Data assigned as class attribute
         self.stock = stock.copy()
+        self.stock['Date'] = pd.to_datetime(self.stock['Date'])
         
         # Minimum and maximum date in range
         self.min_date = pd.to_datetime(min(stock['ds']))
