@@ -30,17 +30,17 @@ class Stocker():
         self.stock = stock.copy()
         
         # Minimum and maximum date in range
-        self.min_date = min(stock['ds'])
-        self.max_date = max(stock['ds'])
+        self.min_date = min(stock['ds']).strftime('%Y-%m-%d')
+        self.max_date = max(stock['ds']).strftime('%Y-%m-%d')
         
         # Find max and min prices and dates on which they occurred
         self.max_price = np.max(self.stock['y'])
         self.min_price = np.min(self.stock['y'])
         
-        self.min_price_date = self.stock[self.stock['y'] == self.min_price]['ds']
-        self.min_price_date = self.min_price_date[self.min_price_date.index[0]]
-        self.max_price_date = self.stock[self.stock['y'] == self.max_price]['ds']
-        self.max_price_date = self.max_price_date[self.max_price_date.index[0]]
+        self.min_price_date = (self.stock[self.stock['y'] == self.min_price]['ds']).strftime('%Y-%m-%d')
+        self.min_price_date = (self.min_price_date[self.min_price_date.index[0]]).strftime('%Y-%m-%d')
+        self.max_price_date = (self.stock[self.stock['y'] == self.max_price]['ds']).strftime('%Y-%m-%d')
+        self.max_price_date = (self.max_price_date[self.max_price_date.index[0]]).strftime('%Y-%m-%d')
         
         # The starting price (starting with the opening price)
         self.starting_price = float(self.stock.ix[0, 'Adj. Open'])
