@@ -32,6 +32,7 @@ class Stocker():
         # Minimum and maximum date in range
         self.min_date = min(stock['ds'])
         self.max_date = max(stock['ds'])
+        print(type(self.max_date))
         
         # Find max and min prices and dates on which they occurred
         self.max_price = np.max(self.stock['y'])
