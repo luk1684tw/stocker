@@ -216,6 +216,7 @@ class Stocker():
         stock_plot['Date'] = pd.to_datetime(stock_plot['Date'])
         stock_plot['mDate'] =  [mdates.date2num(d) for d in stock_plot['Date']]
 
+        print (stock_plot)
         colors = ['r', 'b', 'g', 'y', 'c', 'm']
         
         for i, stat in enumerate(stats):
