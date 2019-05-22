@@ -67,7 +67,8 @@ class Stocker():
         self.yearly_seasonality = True
         self.changepoints = None
         
-        print(type(self.max_date))
+        print (type(self.max_date))
+        print (type(self.min_price_date))
         print('{} Stocker Initialized. Data covers {} to {}.'.format(self.symbol,
                                                                      self.min_date,
                                                                      self.max_date))
