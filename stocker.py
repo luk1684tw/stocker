@@ -3,6 +3,7 @@
 import pandas as pd
 import numpy as np
 import fbprophet
+from datetime import datetime
 
 # matplotlib pyplot for plotting
 import matplotlib.pyplot as plt
@@ -17,7 +18,7 @@ class Stocker():
     def __init__(self, price):
         self.symbol = 'the stock'
         s = price
-        stock = pd.DataFrame({'Date':s.index, 'y':s, 'ds':s.index, 'close':s,'open':s}, index=None)
+        stock = pd.DataFrame({'Date':s.index, 'y':s.Price, 'ds':s.index, 'close':s.Close,'open':s.Open}, index=None)
 
         if ('Adj. Close' not in stock.columns):
             stock['Adj. Close'] = stock['close']
@@ -30,8 +31,8 @@ class Stocker():
         self.stock = stock.copy()
         
         # Minimum and maximum date in range
-        self.min_date = min(stock['ds'])
-        self.max_date = max(stock['ds'])
+        self.min_date = pd.to_datetime(min(stock['ds'])).to_pydatetime()
+        self.max_date = pd.to_datetime(max(stock['ds'])).to_pydatetime()
         
         # Find max and min prices and dates on which they occurred
         self.max_price = np.max(self.stock['y'])
@@ -42,6 +43,9 @@ class Stocker():
         self.max_price_date = self.stock[self.stock['y'] == self.max_price]['ds']
         self.max_price_date = self.max_price_date[self.max_price_date.index[0]]
         
+        self.min_price_date = pd.to_datetime(self.min_price_date).to_pydatetime()
+        self.max_price_date = pd.to_datetime(self.max_price_date).to_pydatetime()
+
         # The starting price (starting with the opening price)
         self.starting_price = float(self.stock.ix[0, 'Adj. Open'])
         
@@ -64,7 +68,7 @@ class Stocker():
         self.changepoints = None
         
         print (type(self.max_date))
-        print (type(self.max_price_date))
+        print (type(self.min_price_date))
         print('{} Stocker Initialized. Data covers {} to {}.'.format(self.symbol,
                                                                      self.min_date,
                                                                      self.max_date))
