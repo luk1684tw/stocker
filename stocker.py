@@ -3,6 +3,7 @@
 import pandas as pd
 import numpy as np
 import fbprophet
+from datetime import datetime
 
 # matplotlib pyplot for plotting
 import matplotlib.pyplot as plt
@@ -30,17 +31,17 @@ class Stocker():
         self.stock = stock.copy()
         
         # Minimum and maximum date in range
-        self.min_date = min(stock['ds']).strftime('%Y-%m-%d')
-        self.max_date = max(stock['ds']).strftime('%Y-%m-%d')
+        self.min_date = datetime.strptime(min(stock['ds']),'%Y-%m-%d')
+        self.max_date = datetime.strptime(max(stock['ds']),'%Y-%m-%d')
         
         # Find max and min prices and dates on which they occurred
         self.max_price = np.max(self.stock['y'])
         self.min_price = np.min(self.stock['y'])
         
-        self.min_price_date = (self.stock[self.stock['y'] == self.min_price]['ds']).strftime('%Y-%m-%d')
-        self.min_price_date = (self.min_price_date[self.min_price_date.index[0]]).strftime('%Y-%m-%d')
-        self.max_price_date = (self.stock[self.stock['y'] == self.max_price]['ds']).strftime('%Y-%m-%d')
-        self.max_price_date = (self.max_price_date[self.max_price_date.index[0]]).strftime('%Y-%m-%d')
+        self.min_price_date = datetime.strptime(self.stock[self.stock['y'] == self.min_price]['ds'],'%Y-%m-%d')
+        self.min_price_date = datetime.strptime(self.min_price_date[self.min_price_date.index[0]],'%Y-%m-%d')
+        self.max_price_date = datetime.strptime(self.stock[self.stock['y'] == self.max_price]['ds'],'%Y-%m-%d')
+        self.max_price_date = datetime.strptime(self.max_price_date[self.max_price_date.index[0]],'%Y-%m-%d')
         
         # The starting price (starting with the opening price)
         self.starting_price = float(self.stock.ix[0, 'Adj. Open'])
