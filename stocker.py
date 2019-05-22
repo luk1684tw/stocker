@@ -7,6 +7,7 @@ from datetime import datetime
 
 # matplotlib pyplot for plotting
 import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 
 import matplotlib
 
@@ -213,6 +214,7 @@ class Stocker():
         stock_plot = self.make_df(start_date, end_date)
         print (stock_plot['Date'])
         stock_plot['Date'] = pd.to_datetime(stock_plot['Date'])
+        stock_plot['mDate'] =  [mdates.date2num(d) for d in stock_plot['Date']]
 
         colors = ['r', 'b', 'g', 'y', 'c', 'm']
         
@@ -223,9 +225,9 @@ class Stocker():
 
             stat_avg = np.mean(stock_plot[stat])
             
-            date_stat_min = stock_plot[stock_plot[stat] == stat_min]['Date']
+            date_stat_min = stock_plot[stock_plot[stat] == stat_min]['mDate']
             date_stat_min = date_stat_min[date_stat_min.index[0]]
-            date_stat_max = stock_plot[stock_plot[stat] == stat_max]['Date']
+            date_stat_max = stock_plot[stock_plot[stat] == stat_max]['mDate']
             date_stat_max = date_stat_max[date_stat_max.index[0]]
             
             print('Maximum {} = {:.2f} on {}.'.format(stat, stat_max, date_stat_max))
@@ -237,23 +239,23 @@ class Stocker():
                 # Simple Plot 
                 plt.style.use('fivethirtyeight');
                 if stat == 'Daily Change':
-                    plt.plot(stock_plot['Date'], 100 * stock_plot[stat],
+                    plt.plot(stock_plot['mDate'], 100 * stock_plot[stat],
                          color = colors[i], linewidth = 2.4, alpha = 0.9,
                          label = stat)
                 else:
-                    plt.plot(stock_plot['Date'], 100 * (stock_plot[stat] -  stat_avg) / stat_avg,
+                    plt.plot(stock_plot['mDate'], 100 * (stock_plot[stat] -  stat_avg) / stat_avg,
                          color = colors[i], linewidth = 2.4, alpha = 0.9,
                          label = stat)
 
-                plt.xlabel('Date'); plt.ylabel('Change Relative to Average (%)'); plt.title('%s Stock History' % self.symbol); 
+                plt.xlabel('mDate'); plt.ylabel('Change Relative to Average (%)'); plt.title('%s Stock History' % self.symbol); 
                 plt.legend(prop={'size':10})
                 plt.grid(color = 'k', alpha = 0.4); 
 
             # Stat y-axis
             elif plot_type == 'basic':
                 plt.style.use('fivethirtyeight');
-                plt.plot(stock_plot['Date'], stock_plot[stat], color = colors[i], linewidth = 3, label = stat, alpha = 0.8)
-                plt.xlabel('Date'); plt.ylabel('US $'); plt.title('%s Stock History' % self.symbol); 
+                plt.plot(stock_plot['mDate'], stock_plot[stat], color = colors[i], linewidth = 3, label = stat, alpha = 0.8)
+                plt.xlabel('mDate'); plt.ylabel('US $'); plt.title('%s Stock History' % self.symbol); 
                 plt.legend(prop={'size':10})
                 plt.grid(color = 'k', alpha = 0.4); 
       
