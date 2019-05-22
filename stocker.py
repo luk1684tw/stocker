@@ -212,7 +212,7 @@ class Stocker():
         
         stock_plot = self.make_df(start_date, end_date)
         print (stock_plot['Date'])
-        stock_plot['Date'] = stock_plot['Date'].to_datetime()
+        stock_plot['Date'] = pd.to_datetime(stock_plot['Date'])
 
         colors = ['r', 'b', 'g', 'y', 'c', 'm']
         
