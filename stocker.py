@@ -64,7 +64,7 @@ class Stocker():
         self.changepoints = None
         
         print(type(self.max_date))
-        # print('{} Stocker Initialized. Data covers {} to {}.'.format(self.symbol,
+        print('{} Stocker Initialized. Data covers {} to {}.'.format(self.symbol,
                                                                      self.min_date,
                                                                      self.max_date))
     
