@@ -43,6 +43,9 @@ class Stocker():
         self.max_price_date = self.stock[self.stock['y'] == self.max_price]['ds']
         self.max_price_date = self.max_price_date[self.max_price_date.index[0]]
         
+        self.min_price_date = pd.to_datetime(self.min_price_date)
+        self.max_price_date = pd.to_datetime(self.max_price_date)
+
         # The starting price (starting with the opening price)
         self.starting_price = float(self.stock.ix[0, 'Adj. Open'])
         
