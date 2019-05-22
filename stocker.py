@@ -211,6 +211,8 @@ class Stocker():
             end_date = self.max_date
         
         stock_plot = self.make_df(start_date, end_date)
+        print (stock_plot['Date'])
+        stock_plot['Date'] = stock_plot['Date'].to_datetime()
 
         colors = ['r', 'b', 'g', 'y', 'c', 'm']
         
