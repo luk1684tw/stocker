@@ -198,7 +198,7 @@ class Stocker():
 
         
             
-        return trim_df
+        return trim_df.to_datetime(trim_df)
 
 
     # Basic Historical Plots and Basic Statistics
