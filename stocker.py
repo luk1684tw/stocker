@@ -826,7 +826,7 @@ class Stocker():
         
         model.fit(train)
         
-        label = label[label['Date'] <= label['Date'][0] + pd.DateOffset(days=days)]
+        label = label[label['Date'] <= label['Date'][1] + pd.DateOffset(days=days)]
         # Future dataframe with specified number of days to predict
         future = model.make_future_dataframe(periods=days, freq='D')
         future = model.predict(future)
