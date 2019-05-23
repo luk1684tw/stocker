@@ -435,12 +435,13 @@ class Stocker():
         if resample:
             stock_history = self.resample(stock_history)
         
-        print ('history:',stock_history['Date'].dtype)
+        print ('history:',stock_history['ds'].dtype)
         model.fit(stock_history)
         
         # Make and predict for next year with future dataframe
         future = model.make_future_dataframe(periods = days, freq='D')
         future = model.predict(future)
+        print ('future:',future['ds'].dtype)
         
         if days > 0:
             # Print the predicted price
