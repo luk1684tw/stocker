@@ -877,7 +877,7 @@ class Stocker():
         ax.plot(future_increase['Date'], future_increase['estimate'], 'g^', ms = 12, label = 'Pred. Increase')
         ax.plot(future_decrease['Date'], future_decrease['estimate'], 'rv', ms = 12, label = 'Pred. Decrease')
 
-        ax.plot(label['Date'], label['Price'], linewidth=1.0, ms = 12, label = 'Truth')
+        ax.plot(label['Date'], label['Price'], linewidth=2, ms = 12, label = 'Truth', color='r')
 
         ax.plot(label_increase['Date'], label_increase['Price'], 'y^', ms = 12, label = 'Label. Increase')
         ax.plot(label_decrease['Date'], label_decrease['Price'], 'kv', ms = 12, label = 'Label. Decrease')
