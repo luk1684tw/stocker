@@ -847,10 +847,12 @@ class Stocker():
         # Rename the columns for presentation
         future = future.rename(columns={'ds': 'Date', 'yhat': 'estimate', 'diff': 'change', 
                                         'yhat_upper': 'upper', 'yhat_lower': 'lower'})
-        
         label = label[label['Date'] <= max(future['Date'])]
+
         future_increase = future[future['direction'] == 1]
         future_decrease = future[future['direction'] == 0]
+        label_increase = label[label['direction'] == 1]
+        label_decrease = label[label['direction'] == 0]
         
         # Print out the dates
         print('\nPredicted Increase: \n')
@@ -874,7 +876,11 @@ class Stocker():
         # Plot the estimates
         ax.plot(future_increase['Date'], future_increase['estimate'], 'g^', ms = 12, label = 'Pred. Increase')
         ax.plot(future_decrease['Date'], future_decrease['estimate'], 'rv', ms = 12, label = 'Pred. Decrease')
-        ax.plot(label['Date'], label['Price'], linewidth = 2.4 , ms = 12, label = 'Truth')
+
+        ax.plot(label['Date'], label['Price'], linewidth=1.0, ms = 12, label = 'Truth')
+
+        ax.plot(label_increase['Date'], label_increase['Price'], 'g^', ms = 12, label = 'Pred. Increase')
+        ax.plot(label_decrease['Date'], label_decrease['Price'], 'rv', ms = 12, label = 'Pred. Decrease')
 
         # Plot errorbars
         ax.errorbar(future['Date'].dt.to_pydatetime(), future['estimate'], 
