@@ -373,6 +373,7 @@ class Stocker():
                                                      ) - pd.DateOffset(years=self.training_years)))]
         
         train['Date'] = pd.to_datetime(train['Date'])
+        train['ds'] = pd.to_datetime(train['ds'])
         # Iterate through all the changepoints and make models
         for i, prior in enumerate(changepoint_priors):
             # Select the changepoint
