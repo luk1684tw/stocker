@@ -435,6 +435,7 @@ class Stocker():
         if resample:
             stock_history = self.resample(stock_history)
         
+        stock_history['ds'] = pd.to_datetime(stock_history['ds'])
         print ('history:',stock_history['ds'].dtype)
         model.fit(stock_history)
         
