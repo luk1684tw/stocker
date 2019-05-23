@@ -435,6 +435,7 @@ class Stocker():
         if resample:
             stock_history = self.resample(stock_history)
         
+        print ('history:',stock_history)
         model.fit(stock_history)
         
         # Make and predict for next year with future dataframe
