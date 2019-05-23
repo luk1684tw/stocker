@@ -835,7 +835,6 @@ class Stocker():
         
         # Remove the weekends
         future = self.remove_weekends(future)
-        label = label[label['Date'] <= max(future['Date'])]
 
         # Calculate whether increase or not
         future['diff'] = future['yhat'].diff()
@@ -849,6 +848,7 @@ class Stocker():
         future = future.rename(columns={'ds': 'Date', 'yhat': 'estimate', 'diff': 'change', 
                                         'yhat_upper': 'upper', 'yhat_lower': 'lower'})
         
+        label = label[label['Date'] <= max(future['Date'])]
         future_increase = future[future['direction'] == 1]
         future_decrease = future[future['direction'] == 0]
         
