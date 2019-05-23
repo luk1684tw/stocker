@@ -56,7 +56,7 @@ class Stocker():
         self.round_dates = True
         
         # Number of years of data to train on
-        self.training_years = yeats
+        self.training_years = trainingYears
 
         # Prophet parameters
         # Default prior from library
