@@ -873,6 +873,7 @@ class Stocker():
         # Plot the estimates
         ax.plot(future_increase['Date'], future_increase['estimate'], 'g^', ms = 12, label = 'Pred. Increase')
         ax.plot(future_decrease['Date'], future_decrease['estimate'], 'rv', ms = 12, label = 'Pred. Decrease')
+        ax.plot(label['Date'], label['Price'], 'ko-' , ms = 12, label = 'Truth')
 
         # Plot errorbars
         ax.errorbar(future['Date'].dt.to_pydatetime(), future['estimate'], 
