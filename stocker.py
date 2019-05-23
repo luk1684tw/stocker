@@ -503,6 +503,7 @@ class Stocker():
         
         # Merge predictions with the known values
         test['ds'] = pd.to_datetime(test['ds'])
+        train['ds'] = pd.to_datetime(train['ds'])
         print (test['ds'].dtype)
         print (future['ds'].dtype)
         test = pd.merge(test, future, on = 'ds', how = 'inner')
