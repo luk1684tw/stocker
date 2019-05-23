@@ -826,7 +826,6 @@ class Stocker():
         
         model.fit(train)
         
-        label = label[label['Date'] <= label['Date'][1] + pd.DateOffset(days=days)]
         # Future dataframe with specified number of days to predict
         future = model.make_future_dataframe(periods=days, freq='D')
         future = model.predict(future)
@@ -836,7 +835,8 @@ class Stocker():
         
         # Remove the weekends
         future = self.remove_weekends(future)
-        
+        label = label[label['Date'] <= max(future['Date'])]
+
         # Calculate whether increase or not
         future['diff'] = future['yhat'].diff()
     
