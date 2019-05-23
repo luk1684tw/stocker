@@ -816,7 +816,7 @@ class Stocker():
             plt.show()
         
     # Predict the future price for a given range of days
-    def predict_future(self, days=30):
+    def predict_future(self, label, days=30):
         
         # Use past self.training_years years for training
         train = self.stock[self.stock['Date'] > (max(self.stock['Date']
