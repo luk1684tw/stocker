@@ -1,5 +1,5 @@
 # Overview
-A simple stock predictor using Facebook's prophet model and interfaced by [this](https://github.com/WillKoehrsen/Data-Analysis/tree/master/stocker) repo, we adpot [this](https://github.com/koreal6803/Stocker) repo as a base whcih changes the very origin interface to allow customized .csv datasets.
+A simple stock predictor using Facebook's prophet model and interfaced by [this](https://github.com/WillKoehrsen/Data-Analysis/tree/master/stocker) repo, we adpot [this](https://github.com/koreal6803/Stocker) repo as a base which changes the very origin interface to allow customized .csv datasets.
 
 ## stocker.py
 Contains the interfaced API class Stocker, go to the original API integraion repo for detailed usage of methods in Stocker.
