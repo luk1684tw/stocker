@@ -16,7 +16,7 @@ import matplotlib
 class Stocker():
     
     # Initialization requires a ticker symbol
-    def __init__(self, price):
+    def __init__(self, price, trainingYears=3):
         self.symbol = 'the stock'
         s = price
         stock = pd.DataFrame({'Date':s['Date'], 'y':s['Price'], 'ds':s['Date'], 'close':s['Close'],'open':s['Open']}, index=None)
@@ -56,7 +56,7 @@ class Stocker():
         self.round_dates = True
         
         # Number of years of data to train on
-        self.training_years = 3
+        self.training_years = yeats
 
         # Prophet parameters
         # Default prior from library
@@ -826,6 +826,7 @@ class Stocker():
         
         model.fit(train)
         
+        label = label[label['Date'] <= label['Date'][0] + pd.DateOffset(days=days)]
         # Future dataframe with specified number of days to predict
         future = model.make_future_dataframe(periods=days, freq='D')
         future = model.predict(future)
@@ -873,7 +874,7 @@ class Stocker():
         # Plot the estimates
         ax.plot(future_increase['Date'], future_increase['estimate'], 'g^', ms = 12, label = 'Pred. Increase')
         ax.plot(future_decrease['Date'], future_decrease['estimate'], 'rv', ms = 12, label = 'Pred. Decrease')
-        ax.plot(label['Date'], label['Price'], 'ko-' , ms = 12, label = 'Truth')
+        ax.plot(label['Date'], label['Price'], 'X' , ms = 12, label = 'Truth')
 
         # Plot errorbars
         ax.errorbar(future['Date'].dt.to_pydatetime(), future['estimate'], 
