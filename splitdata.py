@@ -19,7 +19,7 @@ def DateParser(date):
     return f'{date[2]}-{date[1]}-{date[0]}'
 
 data = pd.read_csv('rawData.csv', parse_dates=['Date'], date_parser=DateParser)
-# print (data.index)
+
 googleData = data[data['Stock'] == 'Google']
 amazData = data[data['Stock'] == 'Amazon'][-len(googleData):]
 fbData = data[data['Stock'] == 'Facebook']
