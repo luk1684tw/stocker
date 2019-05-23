@@ -879,8 +879,8 @@ class Stocker():
 
         ax.plot(label['Date'], label['Price'], linewidth=1.0, ms = 12, label = 'Truth')
 
-        ax.plot(label_increase['Date'], label_increase['Price'], 'g^', ms = 12, label = 'Pred. Increase')
-        ax.plot(label_decrease['Date'], label_decrease['Price'], 'rv', ms = 12, label = 'Pred. Decrease')
+        ax.plot(label_increase['Date'], label_increase['Price'], 'm^', ms = 12, label = 'Label. Increase')
+        ax.plot(label_decrease['Date'], label_decrease['Price'], 'kv', ms = 12, label = 'Label. Decrease')
 
         # Plot errorbars
         ax.errorbar(future['Date'].dt.to_pydatetime(), future['estimate'], 
