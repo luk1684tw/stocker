@@ -26,9 +26,9 @@ fbData = data[data['Stock'] == 'Facebook']
 
 
 # process the datasets to calculate price
-googleData['Price'] = (googleData.loc[:, 'Open'].copy() + googleData.loc[:, 'Close'].copy())/2
-amazData['Price'] = (amazData.loc[:, 'Open'].copy() + amazData.loc[:, 'Close'].copy())/2
-fbData['Price'] = (fbData.loc[:, 'Open'].copy() + fbData.loc[:, 'Close'].copy())/2
+googleData['Price'] = googleData.loc[:, 'Close'].copy()
+amazData['Price'] = amazData.loc[:, 'Close'].copy()
+fbData['Price'] = fbData.loc[:, 'Close'].copy()
 
 # googleData = googleData.drop('Close', axis = 1)
 # googleData = googleData.drop('Open', axis = 1)
@@ -42,6 +42,10 @@ fbData['Price'] = (fbData.loc[:, 'Open'].copy() + fbData.loc[:, 'Close'].copy())
 googleData = googleData.drop('Stock', axis=1)
 amazData = amazData.drop('Stock', axis=1)
 fbData = fbData.drop('Stock', axis=1)
+
+googleData = googleData[googleData['Date'] < pd.to_datetime('2018-1-1')]
+amazData = amazData[amazData['Date'] < pd.to_datetime('2018-1-1')]
+fbData = fbData[fbData['Date'] < pd.to_datetime('2018-1-1')]
 
 googleData.to_csv('./google.csv')
 amazData.to_csv('./amazon.csv')
