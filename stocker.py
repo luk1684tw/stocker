@@ -61,8 +61,8 @@ class Stocker():
         # Prophet parameters
         # Default prior from library
         self.changepoint_prior_scale = 0.05 
-        self.weekly_seasonality = False
-        self.daily_seasonality = False
+        self.weekly_seasonality = True
+        self.daily_seasonality = True
         self.monthly_seasonality = True
         self.yearly_seasonality = True
         self.changepoints = None
