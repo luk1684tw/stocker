@@ -65,7 +65,7 @@ class Stocker():
         self.daily_seasonality = 'auto'
         self.monthly_seasonality = 'auto'
         self.yearly_seasonality = 'auto'
-        # self.changepoints = None
+        self.changepoints = None
         
         print (type(self.max_date))
         print (type(self.min_price_date))
