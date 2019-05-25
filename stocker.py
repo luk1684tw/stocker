@@ -61,10 +61,10 @@ class Stocker():
         # Prophet parameters
         # Default prior from library
         self.changepoint_prior_scale = 0.05 
-        self.weekly_seasonality = 'auto'
-        self.daily_seasonality = 'auto'
-        self.monthly_seasonality = 'auto'
-        self.yearly_seasonality = 'auto'
+        self.weekly_seasonality = True
+        self.daily_seasonality = True
+        self.monthly_seasonality = False
+        self.yearly_seasonality = False
         self.changepoints = None
         
         print (type(self.max_date))
