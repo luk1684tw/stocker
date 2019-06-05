@@ -10,6 +10,7 @@ import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 
 import os
 from datetime import datetime
+from sklearn.preprocessing import StandardScaler
 
 # Any results you write to the current directory are saved as output.
 
@@ -47,6 +48,10 @@ googleData = googleData[googleData['Date'] < pd.to_datetime('2018-1-1')]
 amazData = amazData[amazData['Date'] < pd.to_datetime('2018-1-1')]
 fbData = fbData[fbData['Date'] < pd.to_datetime('2018-1-1')]
 
+scaler = StandardScaler()
+googleData = scaler.fit_transform(googleData)
+amazData = scaler.fit_transform(amazData)
+fbData = scaler.fit_transform(fbData)
 googleData.to_csv('./google.csv')
 amazData.to_csv('./amazon.csv')
 fbData.to_csv('./facebook.csv')
