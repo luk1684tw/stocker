@@ -47,9 +47,9 @@ fbData = fbData.drop('Stock', axis=1)
 googleData['Date'] = pd.to_datetime(googleData['Date'], dayfirst=True)
 amazData['Date'] = pd.to_datetime(amazData['Date'], dayfirst=True)
 fbData['Date'] = pd.to_datetime(fbData['Date'], dayfirst=True)
-googleData = googleData[googleData['Date'] < pd.to_datetime('2018-1-4')]
-amazData = amazData[amazData['Date'] < pd.to_datetime('2018-1-4')]
-fbData = fbData[fbData['Date'] < pd.to_datetime('2018-1-4')]
+googleData = googleData[googleData['Date'] < pd.to_datetime('2018-1-5')]
+amazData = amazData[amazData['Date'] < pd.to_datetime('2018-1-5')]
+fbData = fbData[fbData['Date'] < pd.to_datetime('2018-1-5')]
 
 # scaler = StandardScaler()
 # googleData = googleData.values
