@@ -48,17 +48,19 @@ googleData = googleData[googleData['Date'] < pd.to_datetime('2018-1-2')]
 amazData = amazData[amazData['Date'] < pd.to_datetime('2018-1-2')]
 fbData = fbData[fbData['Date'] < pd.to_datetime('2018-1-2')]
 
-scaler = StandardScaler()
-googleData = googleData.values
-amazData = amazData.values
-fbData = fbData.values
+# scaler = StandardScaler()
+# googleData = googleData.values
+# amazData = amazData.values
+# fbData = fbData.values
 
-googleData[:, 1:] = scaler.fit_transform(googleData[:, 1:])
-amazData[:, 1:] = scaler.fit_transform(amazData[:, 1:])
-fbData[:, 1:] = scaler.fit_transform(fbData[:, 1:])
-googleData = pd.DataFrame(googleData)
-amazData = pd.DataFrame(amazData)
-fbData = pd.DataFrame(fbData)
+# googleData[1:, 1:] = scaler.fit_transform(googleData[1:, 1:])
+# amazData[1:, 1:] = scaler.fit_transform(amazData[1:, 1:])
+# fbData[1:, 1:] = scaler.fit_transform(fbData[1:, 1:])
+# googleData = pd.DataFrame(googleData)
+# amazData = pd.DataFrame(amazData)
+# fbData = pd.DataFrame(fbData)
+
+# googleData.rename({0: 'Date', 1: 'Open', 2: 'High', 3: 'Low', 4: 'Close', 5: 'Adj Close', 6: 'Volume', 7: 'Price'}, axis='columns')
 googleData.to_csv('./google.csv')
 amazData.to_csv('./amazon.csv')
 fbData.to_csv('./facebook.csv')
